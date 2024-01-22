@@ -58,7 +58,7 @@ export default function Footer() {
 
                 </div>
 
-            <span className='fw text-dark text-center font-italic' >All Rights Reserved to  E-Kart Shop.com @2022</span>
+                <span className='fw text-dark text-center font-italic' >All Rights Reserved to  E-Kart Shop.com @2022</span>
             </div>
         </div>
     )

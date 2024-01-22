@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import {Route,Routes} from "react-router-dom"
 import Mobile from './components/Mobile'
 import Footer from './components/Footer'
+import Checkout from './components/checkout'
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
         <Route  element={<Home/>} path={'/'}></Route>
         <Route element={<Mobile></Mobile>} path='/mobiles'></Route>
         <Route element={<Mycart/>} path='/mycart'></Route>
+        <Route element={<Checkout/>} path='/checkout'></Route>
+
+
       </Routes>
 
 

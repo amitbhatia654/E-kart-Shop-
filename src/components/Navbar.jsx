@@ -58,7 +58,6 @@ export default function Navbar(props) {
       ))}
 
 
-
       <button className='btn btn-warning' onClick={() => navigate("/mycart")}>
         My Cart
         <span className='mx-1 '> ({store.cartData.length})</span>
@@ -88,7 +87,7 @@ export default function Navbar(props) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
-              E-kart <span className='text-warning'>Shop</span>
+             <span className='fw-bold fs-3'> E-kart <span className='text-warning'>Shop</span></span>
             </Typography>
 
 
@@ -114,13 +113,17 @@ export default function Navbar(props) {
               }
 
 
-              <input type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-success  " type="submit">Search</button>
+             
 
               <button className='btn btn-warning mx-1' onClick={() => navigate("/mycart")}>
                 My Cart
                 <span className='mx-1 '> ({store.cartData.length})</span>
               </button>
+
+              <button className='btn btn-dark'> My Profile</button>
+              <br></br>
+              <input type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn btn-success  " type="submit">Search</button>
 
 
             </Box>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useStore } from '../HelperComponents/StoreProvider'
 import toast from 'react-hot-toast'
+import {useNavigate} from "react-router-dom"
 
 export default function Mycart() {
     const store = useStore()
+    const navigate=useNavigate()
 
     const removeFromCart = (id) => {
         store.removeProduct(id)
@@ -72,7 +74,7 @@ export default function Mycart() {
                                     <hr></hr>
                                     <span className='fw-bold '>Total Amount <p className='text-end'>₹ {price + 100}</p></span>
                                     <hr></hr>
-                                    <button className="btn btn-danger ">Place order</button>
+                                    <button className="btn btn-danger " onClick={(()=>navigate('/checkout'))}>Place order</button>
 
                                 </div>
                             </div>
