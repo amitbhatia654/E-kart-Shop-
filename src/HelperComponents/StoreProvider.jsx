@@ -6,15 +6,23 @@ const cartContext = createContext(null)
 export const useStore = () => useContext(cartContext);
 
 export default function StoreProvider(props) {
-  const [cartData, setCartData] = useState([])
+
+  var data = localStorage.getItem('Allproduct')
+  if (data)
+    var pData = JSON?.parse(localStorage.getItem('Allproduct'))
+  const [cartData, setCartData] = useState(pData || [])
 
   const addProduct = (data) => {
     setCartData([...cartData, data])
-    
+    var arr = cartData
+    arr.push(data)
+    localStorage.setItem("Allproduct", JSON.stringify(arr))
   }
 
   const removeProduct = (id) => {
-    setCartData( cartData.filter((d)=>(d.id !=id)))
+    var newData = cartData.filter((d) => (d.id != id))
+    setCartData(newData)
+    localStorage.setItem("Allproduct", JSON.stringify(newData))
   }
 
   return (

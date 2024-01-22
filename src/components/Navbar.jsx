@@ -57,10 +57,7 @@ export default function Navbar(props) {
         </ListItem>
       ))}
 
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+
 
       <button className='btn btn-warning' onClick={() => navigate("/mycart")}>
         My Cart
@@ -98,7 +95,7 @@ export default function Navbar(props) {
 
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 
-            
+
 
               {navItems.map((item) => {
                 if (item === '/') {
@@ -115,17 +112,17 @@ export default function Navbar(props) {
 
               })
               }
-             
 
-                {/* <input  type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-success  " type="submit">Search</button> */}
+
+              <input type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn btn-success  " type="submit">Search</button>
 
               <button className='btn btn-warning mx-1' onClick={() => navigate("/mycart")}>
                 My Cart
                 <span className='mx-1 '> ({store.cartData.length})</span>
               </button>
 
-              
+
             </Box>
           </Toolbar>
         </AppBar>
