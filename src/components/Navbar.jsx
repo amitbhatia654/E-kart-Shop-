@@ -20,7 +20,7 @@ import { useStore } from '../HelperComponents/StoreProvider';
 
 
 const drawerWidth = 240;
-const navItems = ['/', 'Mobiles', 'Laptops', 'Electronics', 'Grocery', 'furniture', 'Appliances', 'Kids'];
+const navItems = ['/', 'Mobiles', 'Laptops', 'Electronics', 'Grocery', 'Appliances', 'Furniture'];
 
 export default function Navbar(props) {
 
@@ -63,6 +63,18 @@ export default function Navbar(props) {
         <span className='mx-1 '> ({store.cartData.length})</span>
       </button>
 
+
+      {store.loginUser ? <>
+        <span className='text-light bg-dark py-2 px-2'>{store.loginUser.email}</span>
+        <button className='btn btn-danger' onClick={() => store.logout()}>Logout</button>
+      </>
+        :
+        <>
+          <button className='btn btn-dark' onClick={() => navigate('/login')}> Login</button>
+          <button className='btn btn-dark' onClick={() => navigate('/signup')}> Signup</button>
+        </>
+      }
+
     </Box>
   );
 
@@ -87,7 +99,7 @@ export default function Navbar(props) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
-             <span className='fw-bold fs-3'> E-kart <span className='text-warning'>Shop</span></span>
+              <span className='fw-bold fs-3'> E-kart <span className='text-warning'>Shop</span></span>
             </Typography>
 
 
@@ -99,7 +111,7 @@ export default function Navbar(props) {
               {navItems.map((item) => {
                 if (item === '/') {
                   return (
-                    <Button key={item} sx={{ color: '#fff' }} onClick={() => navigate("/")}>
+                    <Button key={item} sx={{ color: '#fff' }} className="my-2" onClick={() => navigate("/")}>
                       Home
                     </Button>)
                 }
@@ -111,19 +123,29 @@ export default function Navbar(props) {
 
               })
               }
-
-
-             
-
-              <button className='btn btn-warning mx-1' onClick={() => navigate("/mycart")}>
+              <button className='btn btn-warning mx-1 my-2' onClick={() => navigate("/mycart")}>
                 My Cart
                 <span className='mx-1 '> ({store.cartData.length})</span>
               </button>
 
-              <button className='btn btn-dark'> My Profile</button>
-              <br></br>
+              {store.loginUser ? <>
+                <span className='text-light bg-dark py-2 px-2'>{store.loginUser.email}</span>
+                <button className='btn btn-danger' onClick={() => store.logout()}>Logout</button>
+              </>
+                :
+                <>
+                  <button className='btn btn-dark' onClick={() => navigate('/login')}> Login</button>
+                  <button className='btn btn-dark' onClick={() => navigate('/signup')}> Signup</button>
+                </>
+              }
+
+              {/* <br></br>
               <input type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-success  " type="submit">Search</button>
+              <button className="btn btn-success  " type="submit">Search</button> */}
+
+
+
+
 
 
             </Box>

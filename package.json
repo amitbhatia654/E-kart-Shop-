@@ -1,5 +1,5 @@
 {
-  "name": "myweb",
+  "name": "ecommerce",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -17,6 +17,7 @@
     "@mui/material": "^5.15.5",
     "@mui/styled-engine-sc": "^6.0.0-alpha.12",
     "bootstrap": "^5.2.3",
+    "firebase": "^10.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
