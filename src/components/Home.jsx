@@ -5,6 +5,7 @@ import img2 from ".././../Images/digital2.png"
 import img3 from ".././../Images/digital3.png"
 
 import Mobile from './Mobile'
+import Laptop from './Laptop'
 
 export default function Home() {
 
@@ -41,6 +42,7 @@ export default function Home() {
             </div>
 
             <Mobile></Mobile>
+            <Laptop></Laptop>
         </>
     )
 }

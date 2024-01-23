@@ -61,7 +61,7 @@ export default function Mobile() {
     return (
         <div>
             <div className='my-4 mx-5'>
-                <h1 >All Mobiles Phone</h1>
+                <h1 >Mobile Phones</h1>
 
 
 

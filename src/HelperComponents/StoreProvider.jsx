@@ -1,5 +1,8 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
 import { initializeApp } from "firebase/app";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -23,6 +26,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
 
 
 export default function StoreProvider(props) {
@@ -81,6 +86,28 @@ export default function StoreProvider(props) {
     signOut(auth);
   }
 
+
+  const myProfile = async () => {
+    const docRef = doc(db, "userDetails", loginUser?.uid);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+  }
+
+
+  const updateUserProfile = async (uid, name, phone, address) => {
+    try {
+      await setDoc(doc(db, "userDetails", uid), {
+        name,
+        phone,
+        address
+      });
+      return "Profile Updated Suucessfully"
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      return error.message;
+    }
+  }
+
   return (
 
     <cartContext.Provider value={{
@@ -92,6 +119,8 @@ export default function StoreProvider(props) {
       loginUser,
       logout,
       login,
+      myProfile,
+      updateUserProfile,
     }}>
       {props.children}
     </cartContext.Provider>

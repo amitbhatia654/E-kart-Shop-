@@ -5,6 +5,9 @@ export default function Signup() {
     const store = useStore()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
     const [error, setError] = useState("")
 
 
@@ -12,14 +15,13 @@ export default function Signup() {
         try {
             event.preventDefault();
             const res = await store.signupNewUser(email, password)
-            if (!res.uid)
+            if (!res.uid){
                 setError(res)
-            setEmail("")
-            setPassword("")
+            }
+            
         } catch (error) {
-
+            console.log(error)
         }
-
     }
 
     return (
@@ -28,8 +30,6 @@ export default function Signup() {
             <div className='container'>
                 <div className='row d-flex justify-content-center my-5 '>
                     <div className='col-md-6 border py-4  px-4' >
-
-
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -44,7 +44,6 @@ export default function Signup() {
                             <p className='text-danger'>{error}</p>
 
                         </form>
-
                     </div>
                 </div>
             </div>

@@ -13,6 +13,8 @@ import Login from './components/Login'
 import { useStore } from './HelperComponents/StoreProvider'
 import { useEffect } from 'react'
 import Laptop from './components/Laptop'
+import Myprofile from './components/Myprofile'
+import UpdateProfile from './components/UpdateProfile'
 
 function App() {
 
@@ -35,11 +37,14 @@ function App() {
         <Route element={<Home />} path={'/'}></Route>
         <Route element={<Mobile></Mobile>} path='/mobiles'></Route>
         <Route element={<Laptop></Laptop>} path='/laptops'></Route>
-
         <Route element={<Mycart />} path='/mycart'></Route>
         <Route element={<Checkout />} path='/checkout'></Route>
         <Route element={<Signup />} path='/signup'></Route>
         <Route element={<Login />} path='/login'></Route>
+        <Route element={<Myprofile />} path='/myprofile'></Route>
+        <Route element={<UpdateProfile />} path='/updateprofile'></Route>
+
+
       </Routes>
 
 

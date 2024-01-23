@@ -17,6 +17,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom"
 
 import { useStore } from '../HelperComponents/StoreProvider';
+import LoginMenu from './LoginMenu';
 
 
 const drawerWidth = 240;
@@ -57,30 +58,15 @@ export default function Navbar(props) {
         </ListItem>
       ))}
 
+      <LoginMenu></LoginMenu>
 
-      <button className='btn btn-warning' onClick={() => navigate("/mycart")}>
-        My Cart
-        <span className='mx-1 '> ({store.cartData.length})</span>
-      </button>
-
-
-      {store.loginUser ? <>
-        <span className='text-light bg-dark py-2 px-2'>{store.loginUser.email}</span>
-        <button className='btn btn-danger' onClick={() => store.logout()}>Logout</button>
-      </>
-        :
-        <>
-          <button className='btn btn-dark' onClick={() => navigate('/login')}> Login</button>
-          <button className='btn btn-dark' onClick={() => navigate('/signup')}> Signup</button>
-        </>
-      }
 
     </Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
   return (
-    <div className='my-2'>
+    <div className=''>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar component="nav">
@@ -127,24 +113,13 @@ export default function Navbar(props) {
                 My Cart
                 <span className='mx-1 '> ({store.cartData.length})</span>
               </button>
-
-              {store.loginUser ? <>
-                <span className='text-light bg-dark py-2 px-2'>{store.loginUser.email}</span>
-                <button className='btn btn-danger' onClick={() => store.logout()}>Logout</button>
-              </>
-                :
+              
+              {store.loginUser ?
+                <LoginMenu></LoginMenu> :
                 <>
                   <button className='btn btn-dark' onClick={() => navigate('/login')}> Login</button>
                   <button className='btn btn-dark' onClick={() => navigate('/signup')}> Signup</button>
-                </>
-              }
-
-              {/* <br></br>
-              <input type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-success  " type="submit">Search</button> */}
-
-
-
+                </>}
 
 
 

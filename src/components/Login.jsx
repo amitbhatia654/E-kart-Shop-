@@ -18,8 +18,7 @@ export default function Login() {
                 navigate('/')
             else
                 setError(res)
-            setEmail("")
-            setPassword("")
+            
         } catch (error) {
             console.log(error)
         }

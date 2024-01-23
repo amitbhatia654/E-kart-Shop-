@@ -61,7 +61,7 @@ export default function Laptop() {
     return (
         <div>
             <div className='my-4 mx-5'>
-                <h1 >All Laptops</h1>
+                <h1 >Laptops</h1>
 
 
 
