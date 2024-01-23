@@ -8,8 +8,8 @@ export default function LoginMenu() {
     return (
         <>
             <span className="btn-group">
-                <button type="button" className="btn btn-danger">{store.loginUser?.email}</button>
-                <button type="button" className="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span  className="btn btn-light">{store.loginUser?.email}</span>
+                <button type="button" className="btn btn-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                     <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">

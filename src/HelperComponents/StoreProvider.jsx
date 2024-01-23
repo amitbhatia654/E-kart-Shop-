@@ -32,21 +32,25 @@ const db = getFirestore(app);
 
 export default function StoreProvider(props) {
 
-  const [loginUser, setLoginUser] = useState('')
+  var loginData = JSON?.parse(localStorage.getItem('loggedInUser'))
+
+  const [loginUser, setLoginUser] = useState(loginData || null)
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setLoginUser(user)
+        localStorage.setItem("loggedInUser", JSON.stringify(user))
       } else {
         setLoginUser(null)
+        localStorage.setItem("loggedInUser", null)
       }
     });
   })
 
   var data = localStorage.getItem('Allproduct')
   if (data)
-    var pData = JSON?.parse(localStorage.getItem('Allproduct'))
+    var pData = JSON?.parse(localStorage.getItem('Allproduct'))  // to convert data from stringify
   const [cartData, setCartData] = useState(pData || [])
 
   const addProduct = (data) => {
@@ -84,6 +88,8 @@ export default function StoreProvider(props) {
 
   const logout = () => {
     signOut(auth);
+    localStorage.setItem("loggedInUser", null)
+
   }
 
 
