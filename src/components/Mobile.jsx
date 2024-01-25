@@ -61,7 +61,7 @@ export default function Mobile() {
     return (
         <div>
             <div className='my-4 mx-5'>
-                <h1 >Mobile Phones</h1>
+                <h3 >Mobile Phones</h3>
 
 
 
@@ -72,12 +72,12 @@ export default function Mobile() {
                                 <div className='col-md-3' key={item.id}>
                                     <div className="card " >
                                         <div className="card-body">
-                                            <h3 className="card-title">{item.brand}</h3>
-                                            <h5 className="card-title">{item.title}</h5>
+                                            <h4 className="card-title">{item.brand}</h4>
+                                            <h6 className="card-title">{item.title}</h6>
                                             <img src={item?.url} />
 
                                             <p className="card-text">{item.description}</p>
-                                            <h2>Rs.{item.Price}</h2>
+                                            <h5>Rs.{item.Price}</h5>
                                             <button className="btn btn-danger mx-1">Buy Now</button>
                                             {store.cartData.some(e => e.id == item.id) ?
                                                 <button className="btn btn-primary mx-1" onClick={() => removeFromCart(item.id)}>Remove</button>
