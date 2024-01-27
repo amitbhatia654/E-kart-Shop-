@@ -1,13 +1,8 @@
 {
-    "routes":[
+    "rewrites":[
         {
-            "src":"/",
-            "dest":"/"
-        },
-
-        {
-            "src":"/mobiles",
-            "dest":"/"
+            "source":"/(.*)",
+            "destination":"/"
         }
 
     ]
