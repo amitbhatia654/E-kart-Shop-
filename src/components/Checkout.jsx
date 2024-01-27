@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../HelperComponents/StoreProvider";
@@ -60,45 +61,55 @@ export default function Checkout() {
                       <span>{data?.phone}</span>
                       <p>{data?.address}</p>
                     </>
-                  ) : (<>
-                    <span className="text-danger">
-                      Please Update Address in Profile Section
-                    </span>
-                </>
+                  ) : (
+                    <>
+                      <span className="text-danger">
+                        Please Update Address in Profile Section
+                      </span>
+                    </>
                   )}
                   <hr />
                   <h4>Payment Selection</h4>
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
                       id="flexRadioDefault1"
                     />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label
+                      className="form-check-label"
+                      htmlFor="flexRadioDefault1"
+                    >
                       UPI Payments
                     </label>
                   </div>
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
                       id="flexRadioDefault1"
                     />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label
+                      className="form-check-label"
+                      htmlFor="flexRadioDefault1"
+                    >
                       Credit/ Debit Card
                     </label>
                   </div>
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
                       id="flexRadioDefault2"
                       checked
                     />
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <label
+                      className="form-check-label"
+                      htmlFor="flexRadioDefault2"
+                    >
                       Cash on Delievery
                     </label>
                   </div>
