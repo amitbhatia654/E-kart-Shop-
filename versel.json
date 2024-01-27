@@ -2,12 +2,12 @@
     "routes":[
         {
             "src":"/",
-            "des":"/"
+            "dest":"/"
         },
 
         {
             "src":"/mobiles",
-            "des":"/"
+            "dest":"/"
         }
 
     ]
