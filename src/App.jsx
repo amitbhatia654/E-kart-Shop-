@@ -14,6 +14,8 @@ import Laptop from "./components/Laptop";
 import Myprofile from "./components/Myprofile";
 import UpdateProfile from "./components/UpdateProfile";
 import Checkout from "./components/Checkout";
+import Electronics from "./components/Electronics";
+import ProductDetailPage from "./components/ProductDetailPage";
 
 function App() {
   const store = useStore();
@@ -35,12 +37,21 @@ function App() {
         <Route element={<Home />} path={"/"}></Route>
         <Route element={<Mobile></Mobile>} path="/mobiles"></Route>
         <Route element={<Laptop></Laptop>} path="/laptops"></Route>
+        <Route
+          element={<Electronics></Electronics>}
+          path="/electronics"
+        ></Route>
+
         <Route element={<Mycart />} path="/mycart"></Route>
         <Route element={<Checkout />} path="/checkout"></Route>
         <Route element={<Signup />} path="/signup"></Route>
         <Route element={<Login />} path="/login"></Route>
         <Route element={<Myprofile />} path="/myprofile"></Route>
         <Route element={<UpdateProfile />} path="/updateprofile"></Route>
+        <Route
+          element={<ProductDetailPage />}
+          path="/product-details/:id"
+        ></Route>
       </Routes>
 
       <Footer></Footer>
