@@ -58,6 +58,11 @@ export default function Mobile() {
     store.removeProduct(id);
     toast.success("Product Removed Successfully");
   };
+
+  const buyNow = (data) => {
+    store.addProduct(data);
+    navigate("/checkout");
+  };
   return (
     <div>
       <div className="my-4 mx-5">
@@ -74,12 +79,17 @@ export default function Mobile() {
                       <h6 className="card-title">{item.title}</h6>
                       <img
                         src={item?.url}
-                        onClick={() => navigate(`/product-details/${3}`)}
+                        // onClick={() => navigate(`/product-details/${3}`)}
                       />
 
                       <p className="card-text">{item.description}</p>
                       <h5>Rs.{item.Price}</h5>
-                      <button className="btn btn-danger mx-1">Buy Now</button>
+                      <button
+                        className="btn btn-danger mx-1"
+                        onClick={() => buyNow(item)}
+                      >
+                        Buy Now
+                      </button>
                       {store.cartData.some((e) => e.id == item.id) ? (
                         <button
                           className="btn btn-primary mx-1"

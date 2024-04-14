@@ -21,10 +21,21 @@ export default function Mycart() {
 
   return (
     <>
-      <h1 className=" d-flex justify-content-center">
-        <u>MY CART</u>
+      <h1 className=" d-flex justify-content-center ">
+        <u className="my-3">MY CART</u>
       </h1>
-      {store.cartData.length < 1 && <h4>Cart is Empty</h4>}
+      {store.cartData.length < 1 && (
+        <h4
+          style={{ height: "360px" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          Your Cart is Empty{" "}
+          <button className="btn btn-primary" onClick={() => navigate("/")}>
+            {" "}
+            Shop Now
+          </button>
+        </h4>
+      )}
       <div className="container">
         <div className="row px-3">
           <div className="col-md-8 px-3 ">
@@ -78,6 +89,15 @@ export default function Mycart() {
                     onClick={() => navigate("/checkout")}
                   >
                     Checkout
+                  </button>
+                  <button
+                    className="btn btn-primary mx-2"
+                    onClick={() => {
+                      store.removeAllItems(),
+                        toast.success("All Items are removed from cart");
+                    }}
+                  >
+                    Remove All
                   </button>
                 </div>
               </div>

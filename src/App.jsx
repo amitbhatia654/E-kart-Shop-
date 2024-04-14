@@ -35,12 +35,10 @@ function App() {
 
       <Routes>
         <Route element={<Home />} path={"/"}></Route>
-        <Route element={<Mobile></Mobile>} path="/mobiles"></Route>
-        <Route element={<Laptop></Laptop>} path="/laptops"></Route>
-        <Route
-          element={<Electronics></Electronics>}
-          path="/electronics"
-        ></Route>
+        <Route element={<Mobile />} path="/mobiles"></Route>
+        <Route element={<Laptop />} path="/laptops"></Route>
+        <Route element={<Electronics />} path="/electronics"></Route>
+        <Route element={<Laptop />} path="/grocery"></Route>
 
         <Route element={<Mycart />} path="/mycart"></Route>
         <Route element={<Checkout />} path="/checkout"></Route>
