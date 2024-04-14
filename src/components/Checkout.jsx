@@ -20,7 +20,8 @@ export default function Checkout() {
 
   useEffect(() => {
     getProfileData();
-  }, []);
+    store.cartData.length == 0 && navigate("/mycart");
+  }, [store.cartData]);
 
   const getProfileData = async () => {
     const res = await store.myProfile();
