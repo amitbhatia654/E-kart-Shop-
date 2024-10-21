@@ -74,7 +74,7 @@ export default function Mobile() {
               return (
                 <div className="col-md-3" key={item.id}>
                   <div className="card ">
-                    <div className="card-body">
+                    <div className="card-body">                                
                       <h4 className="card-title">{item.brand}</h4>
                       <h6 className="card-title">{item.title}</h6>
                       <img
