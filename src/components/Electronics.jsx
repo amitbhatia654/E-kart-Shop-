@@ -66,7 +66,7 @@ export default function Electronics() {
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           >
             {" "}
-            Electonics and Home Appliances{" "}
+            Electronics and Home Appliances{" "}
           </h2>
           <div className="row">
             {products.map((item) => {

@@ -5,14 +5,15 @@ import PersonIcon from "@mui/icons-material/Person";
 import GradingIcon from "@mui/icons-material/Grading";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-export default function LoginMenu() {
+export default function LoginMenu({ handleDrawerToggle }) {
   const store = useStore();
   const navigate = useNavigate();
   const [name, setName] = useState("");
 
   const getProfileData = async () => {
     const res = await store.myProfile();
-    setName(res.name);
+    if (res.name) setName(res.name);
+    else setName("");
   };
 
   useEffect(() => {
@@ -21,7 +22,9 @@ export default function LoginMenu() {
   return (
     <>
       <span className="btn-group">
-        <span className="btn btn-light">Hey, {name ? name : "User"}</span>
+        <span className="btn btn-light">
+          Hey, {name ? name : store?.loginUser.email}
+        </span>
         <button
           type="button"
           className="btn btn-dark dropdown-toggle dropdown-toggle-split"
@@ -34,7 +37,9 @@ export default function LoginMenu() {
           <li>
             <button
               className="dropdown-item"
-              onClick={() => navigate("/myprofile")}
+              onClick={() => {
+                navigate("/myprofile"), handleDrawerToggle();
+              }}
             >
               <PersonIcon></PersonIcon> My Profile
             </button>
@@ -43,7 +48,9 @@ export default function LoginMenu() {
           <li>
             <button
               className="dropdown-item"
-              onClick={() => navigate("/myorders")}
+              onClick={() => {
+                navigate("/myorders"), handleDrawerToggle();
+              }}
             >
               <GradingIcon></GradingIcon> MY Orders
             </button>
@@ -53,7 +60,7 @@ export default function LoginMenu() {
             <button
               className="btn btn-danger mx-3"
               onClick={() => {
-                store.logout(), navigate("/");
+                store.logout(), navigate("/"), handleDrawerToggle();
               }}
             >
               <LogoutIcon></LogoutIcon> Logout

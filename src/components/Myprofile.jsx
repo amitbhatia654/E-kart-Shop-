@@ -18,14 +18,14 @@ export default function Myprofile() {
   return (
     <div className="container mt-4">
       <div className="row ">
-        <div style={{ minHeight: "350px" }} className="col-md-12 table1 m-3 ">
+        <div style={{ minHeight: "350px" }} className="col-md-12  my-2 ">
           <h1
             className=""
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           >
             My Profile
           </h1>
-          <table className=" ">
+          <table className="table  ">
             <tbody>
               <tr>
                 <th scope="row">Name</th>
@@ -33,7 +33,7 @@ export default function Myprofile() {
               </tr>
               <tr>
                 <th scope="row">Email</th>
-                <td>{data?.email ?? "--"}</td>
+                <td>{store?.loginUser.email ?? "--"}</td>
               </tr>
 
               <tr>

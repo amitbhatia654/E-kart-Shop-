@@ -20,6 +20,7 @@ import HomeIcon from "@mui/icons-material/Home";
 
 import { useStore } from "../HelperComponents/StoreProvider";
 import LoginMenu from "./LoginMenu";
+import { BorderAll } from "@mui/icons-material";
 
 const drawerWidth = 240;
 const navItems = ["/", "Mobiles", "Laptops", "Electronics", "Grocery"];
@@ -34,23 +35,27 @@ export default function Navbar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
+  // onClick = { handleDrawerToggle };
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         <span
           onClick={() => {
             navigate("/");
+            handleDrawerToggle();
           }}
         >
           {" "}
-        </span>{" "}
-        E-Kart <span className="text-warning">Shop</span>
+          E-Kart <span className="text-warning">Shop</span>
+        </span>
       </Typography>
       <Divider />
-
       {navItems.map((item) => (
-        <ListItem key={item} disablePadding>
+        <ListItem
+          key={item}
+          disablePadding
+          onClick={() => handleDrawerToggle()}
+        >
           <ListItemButton sx={{ textAlign: "center" }}>
             {item === "/" ? (
               <ListItemText primary="Home" onClick={() => navigate("/")} />
@@ -64,7 +69,40 @@ export default function Navbar(props) {
         </ListItem>
       ))}
 
-      <LoginMenu></LoginMenu>
+      <button
+        className="btn btn-warning mx-1 my-2"
+        onClick={() => {
+          handleDrawerToggle(), navigate("/mycart");
+        }}
+      >
+        <ShoppingCartIcon></ShoppingCartIcon> Cart
+        <span className="mx-1 "> ({store.cartData.length})</span>
+      </button>
+
+      {store.loginUser ? (
+        <LoginMenu handleDrawerToggle={handleDrawerToggle}></LoginMenu>
+      ) : (
+        <>
+          <button
+            className="btn btn-dark"
+            onClick={() => {
+              handleDrawerToggle(), navigate("/login");
+            }}
+          >
+            {" "}
+            Login
+          </button>
+          <button
+            className="btn btn-dark mx-1  "
+            onClick={() => {
+              handleDrawerToggle(), navigate("/signup");
+            }}
+          >
+            {" "}
+            New User
+          </button>
+        </>
+      )}
     </Box>
   );
 
@@ -76,15 +114,26 @@ export default function Navbar(props) {
         <CssBaseline />
         <AppBar component="nav">
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <div className="mobile">
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: "none" } }}
+              >
+                <MenuIcon />
+              </IconButton>
+
+              <button
+                className="btn btn-warning mx-1 my-2"
+                onClick={() => navigate("/mycart")}
+              >
+                <ShoppingCartIcon></ShoppingCartIcon> Cart
+                <span className="mx-1 "> ({store.cartData.length})</span>
+              </button>
+            </div>
+
             <Typography
               variant="h6"
               component="div"
@@ -101,7 +150,6 @@ export default function Navbar(props) {
                 E-kart <span className="text-warning">Shop</span>
               </span>
             </Typography>
-
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => {
                 if (item === "/") {
@@ -134,7 +182,6 @@ export default function Navbar(props) {
                 <ShoppingCartIcon></ShoppingCartIcon> Cart
                 <span className="mx-1 "> ({store.cartData.length})</span>
               </button>
-
               {store.loginUser ? (
                 <LoginMenu></LoginMenu>
               ) : (
@@ -158,6 +205,7 @@ export default function Navbar(props) {
             </Box>
           </Toolbar>
         </AppBar>
+
         <nav>
           <Drawer
             container={container}

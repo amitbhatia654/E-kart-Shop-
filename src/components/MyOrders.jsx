@@ -44,8 +44,8 @@ export default function MyOrders() {
           {" "}
           Orders Details
         </h2>
-        <div className="row table1">
-          <table class=" ">
+        <div className="row my-4">
+          <table class="table  ">
             <thead className="">
               <tr>
                 <th>S.No.</th>
@@ -67,11 +67,7 @@ export default function MyOrders() {
                         <td>{serialNumber++}</td>
                         <td>{item.title}</td>
                         <td>
-                          <img
-                            src={item?.url}
-                            height={"65px"}
-                            width={"100px"}
-                          />
+                          <img src={item?.url} height={"65px"} width={"70px"} />
                         </td>
                         <td>₹ {item.Price}</td>
                         <td>
