@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 export default function Checkout() {
   const store = useStore();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   var price = 0;
   {
@@ -33,23 +34,32 @@ export default function Checkout() {
     toast.success("Product Removed Successfully");
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
+    setLoading(true);
+    const res = await store.addOrderDetails(
+      store.cartData,
+      store.loginUser.uid
+    );
     store.removeAllItems();
     toast.success("Order Placed Successfully");
+    setLoading(false);
     navigate("/");
   };
   return (
     <div>
       <button className="btn btn-dark my-2" onClick={() => navigate("/mycart")}>
-        Go Back
+        Go Back{console.log(store.loginUser, "login ")}
       </button>
       <div className="container ">
-        <div className="row">
+        {/* <h2 className="text-center">Checkout Details </h2> */}
+        <div className="row d-flex justify-content-center">
           {store.cartData.length > 0 && (
-            <div className="col-md-4 my-3 d-flex justify-content-end">
+            <div className="col-md-4 my-3">
               <div className=" ">
-                <div className="border py-4 px-4" style={{ width: "350px" }}>
-                  <h5>PRICE DETAILS ({store.cartData.length} Items)</h5>
+                <div className="border py-4 px-4" style={{ width: "380px" }}>
+                  <h3 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+                    PRICE DETAILS ({store.cartData.length} Items)
+                  </h3>
                   <hr></hr>
                   {store.cartData.map((data, index) => {
                     return (
@@ -61,12 +71,14 @@ export default function Checkout() {
                           ₹ {data.Price}{" "}
                           <DeleteIcon
                             onClick={() => removeFromCart(data.id)}
+                            style={{ cursor: "pointer", marginLeft: "15px" }}
                           ></DeleteIcon>{" "}
                         </p>{" "}
                       </div>
                     );
                   })}
-                  Delivery Charges <p className="text-end"> ₹ 100</p>
+                  <span className="fw-bold"> Delivery Charges </span>
+                  <p className="text-end"> ₹ 100</p>
                   <hr></hr>
                   <span className="fw-bold ">
                     Total Amount <p className="text-end">₹ {price + 100}</p>
@@ -79,6 +91,7 @@ export default function Checkout() {
                       type="radio"
                       name="flexRadioDefault"
                       id="flexRadioDefault1"
+                      disabled={true}
                     />
                     <label
                       className="form-check-label"
@@ -92,6 +105,7 @@ export default function Checkout() {
                       className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
+                      disabled
                       id="flexRadioDefault1"
                     />
                     <label
@@ -117,25 +131,33 @@ export default function Checkout() {
                     </label>
                   </div>
                   <hr />
-                  <h4>Delievery Address</h4>
+                  <h4>Delivery Address</h4>
                   {data ? (
                     <>
-                      <span className="fw-bold">{data?.name}</span>
-                      <br></br>
-                      <span>{data?.phone}</span>
-                      <p>{data?.address}</p>
+                      <p>
+                        {" "}
+                        Name: <span className="fw-bold">{data?.name}</span>
+                        <br></br>
+                        Phone: <span className="fw-bold">{data?.phone}</span>
+                        <br></br>
+                        Address:{" "}
+                        <span className="fw-bold">{data?.address}</span>
+                      </p>
                     </>
                   ) : (
                     <>
-                      <span className="text-danger">
-                        Please Update Address in Profile Section
+                      <span className="text-danger fs-4">
+                        {store.loginUser?.uid
+                          ? " Please Update Address in Profile Section !"
+                          : "Please login to place order!"}
                       </span>
                     </>
                   )}
+                  <br></br>
                   <button
                     className={`btn btn-danger my-4 `}
                     onClick={() => handlePlaceOrder()}
-                    disabled={!data}
+                    disabled={!data || loading}
                   >
                     Place Order
                   </button>

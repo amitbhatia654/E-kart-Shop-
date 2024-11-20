@@ -5,6 +5,7 @@ import img3 from ".././../Images/digital3.png";
 
 import Mobile from "./Mobile";
 import Laptop from "./Laptop";
+import Electronics from "./Electronics";
 
 export default function Home() {
   return (
@@ -38,13 +39,28 @@ export default function Home() {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={img1} className="d-block w-100" alt="..." />
+            <img
+              src={img1}
+              className="d-block w-100"
+              height={"650px"}
+              alt="..."
+            />
           </div>
           <div className="carousel-item">
-            <img src={img2} className="d-block w-100" alt="..." />
+            <img
+              src={img2}
+              className="d-block w-100"
+              height={"650px"}
+              alt="..."
+            />
           </div>
           <div className="carousel-item">
-            <img src={img3} className="d-block w-100" alt="..." />
+            <img
+              src={img3}
+              className="d-block w-100"
+              height={"650px"}
+              alt="..."
+            />
           </div>
         </div>
         <button
@@ -75,6 +91,7 @@ export default function Home() {
 
       <Mobile></Mobile>
       <Laptop></Laptop>
+      <Electronics></Electronics>
     </>
   );
 }

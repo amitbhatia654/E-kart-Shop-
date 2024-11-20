@@ -15,6 +15,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HomeIcon from "@mui/icons-material/Home";
 
 import { useStore } from "../HelperComponents/StoreProvider";
 import LoginMenu from "./LoginMenu";
@@ -36,6 +38,13 @@ export default function Navbar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
+        <span
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          {" "}
+        </span>{" "}
         E-Kart <span className="text-warning">Shop</span>
       </Typography>
       <Divider />
@@ -81,7 +90,13 @@ export default function Navbar(props) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <span className="fw-bold fs-3">
+              <span
+                className="fw-bold fs-3 "
+                onClick={() => {
+                  navigate("/");
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 {" "}
                 E-kart <span className="text-warning">Shop</span>
               </span>
@@ -97,6 +112,7 @@ export default function Navbar(props) {
                       className="my-2"
                       onClick={() => navigate("/")}
                     >
+                      {/* <HomeIcon></HomeIcon> Home */}
                       Home
                     </Button>
                   );
@@ -115,7 +131,7 @@ export default function Navbar(props) {
                 className="btn btn-warning mx-1 my-2"
                 onClick={() => navigate("/mycart")}
               >
-                My Cart
+                <ShoppingCartIcon></ShoppingCartIcon> Cart
                 <span className="mx-1 "> ({store.cartData.length})</span>
               </button>
 
@@ -131,11 +147,11 @@ export default function Navbar(props) {
                     Login
                   </button>
                   <button
-                    className="btn btn-dark"
+                    className="btn btn-dark mx-1  "
                     onClick={() => navigate("/signup")}
                   >
                     {" "}
-                    Signup
+                    New User
                   </button>
                 </>
               )}

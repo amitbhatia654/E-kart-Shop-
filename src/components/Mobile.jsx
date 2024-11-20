@@ -19,7 +19,7 @@ export default function Mobile() {
       id: 2,
       brand: "Vivo",
       title: "Vivo y81 Mobile",
-      description: "The connected power of vivo  Mobile",
+      description: "The connected power of vivo Mobile phones",
       url: "data:image/jpeg;base64,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",
       Price: 15000,
     },
@@ -66,15 +66,23 @@ export default function Mobile() {
   return (
     <div>
       <div className="my-4 mx-5">
-        <h3>Mobile Phones</h3>
-
-        <div className="container">
-          <div className="row">
+        <div className="container ">
+          <h2
+            className="my-4"
+            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          >
+            Mobile Phones
+          </h2>
+          <div className="row my-2">
             {products.map((item) => {
               return (
-                <div className="col-md-3" key={item.id}>
-                  <div className="card ">
-                    <div className="card-body">                                
+                <div
+                  className="col-md-3 m-1 products"
+                  key={item.id}
+                  style={{ width: "320px" }}
+                >
+                  <div className="card " style={{ border: "0px solid" }}>
+                    <div className="card-body">
                       <h4 className="card-title">{item.brand}</h4>
                       <h6 className="card-title">{item.title}</h6>
                       <img

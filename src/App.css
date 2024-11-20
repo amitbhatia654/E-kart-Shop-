@@ -1,0 +1,29 @@
+.products {
+    border: 0px solid;
+    box-shadow: 1px 2px 5px grey;
+    margin-top: 10px;
+
+
+}
+
+.card {
+    background-color: #bebec1;
+}
+
+.footer {
+    background-color: #1976D2;
+}
+
+.table1 {
+    /* background-color: #bebec1 !important; */
+    /* border: 1px solid black !important; */
+    box-shadow: 1px 2px 8px grey;
+    padding: 20px !important;
+}
+
+
+#root {
+    background-color: #bebec1;
+}
+
+/* ced0e5 */

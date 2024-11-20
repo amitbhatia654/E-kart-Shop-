@@ -16,6 +16,7 @@ import UpdateProfile from "./components/UpdateProfile";
 import Checkout from "./components/Checkout";
 import Electronics from "./components/Electronics";
 import ProductDetailPage from "./components/ProductDetailPage";
+import MyOrders from "./components/MyOrders";
 
 function App() {
   const store = useStore();
@@ -45,6 +46,8 @@ function App() {
         <Route element={<Signup />} path="/signup"></Route>
         <Route element={<Login />} path="/login"></Route>
         <Route element={<Myprofile />} path="/myprofile"></Route>
+        <Route element={<MyOrders />} path="/myorders"></Route>
+
         <Route element={<UpdateProfile />} path="/updateprofile"></Route>
         <Route
           element={<ProductDetailPage />}

@@ -1,9 +1,11 @@
 import React from "react";
 import { useStore } from "../HelperComponents/StoreProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Laptop() {
   const store = useStore();
+  const navigate = useNavigate();
   const products = [
     {
       id: 6,
@@ -12,6 +14,15 @@ export default function Laptop() {
       description: "The connected power of Apple MacBook Pro",
       url: "data:image/jpeg;base64,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",
       Price: 199990,
+    },
+
+    {
+      id: 7,
+      brand: "Apple",
+      title: "MacBook 15 ",
+      description: "Stylish & Quality Laptop with processor and life long  ",
+      url: "data:image/jpeg;base64,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",
+      Price: 250999,
     },
     // {
     //     id: 2,
@@ -56,17 +67,30 @@ export default function Laptop() {
     store.removeProduct(id);
     toast.success("Product Removed Successfully");
   };
+
+  const buyNow = (data) => {
+    store.addProduct(data);
+    navigate("/checkout");
+  };
   return (
     <div>
       <div className="my-4 mx-5">
-        <h3>All Laptops are available here </h3>
-
-        <div className="container">
+        <div className="container my-4">
+          <h2
+            className="my-4"
+            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          >
+            Branded Laptops{" "}
+          </h2>
           <div className="row">
             {products.map((item) => {
               return (
-                <div className="col-md-3" key={item.id}>
-                  <div className="card ">
+                <div
+                  className="col-md-3 m-1 products"
+                  key={item.id}
+                  style={{ width: "320px" }}
+                >
+                  <div className="card " style={{ border: "0px solid" }}>
                     <div className="card-body">
                       <h3 className="card-title">{item.brand}</h3>
                       <h5 className="card-title">{item.title}</h5>
@@ -74,7 +98,12 @@ export default function Laptop() {
 
                       <p className="card-text">{item.description}</p>
                       <h2>Rs.{item.Price}</h2>
-                      <button className="btn btn-danger mx-1">Buy Now</button>
+                      <button
+                        className="btn btn-danger mx-1"
+                        onClick={() => buyNow(item)}
+                      >
+                        Buy Now
+                      </button>
                       {store.cartData.some((e) => e.id == item.id) ? (
                         <button
                           className="btn btn-primary mx-1"

@@ -21,22 +21,29 @@ export default function Mycart() {
 
   return (
     <>
-      <h1 className=" d-flex justify-content-center ">
-        <u className="my-3">MY CART</u>
+      <h1 className=" d-flex justify-content-center  ">
+        <u
+          className="mt-3"
+          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+        >
+          MY CART
+        </u>
       </h1>
       {store.cartData.length < 1 && (
-        <h4
-          style={{ height: "360px" }}
-          className="d-flex justify-content-center align-items-center"
-        >
-          Your Cart is Empty{" "}
-          <button className="btn btn-primary" onClick={() => navigate("/")}>
-            {" "}
-            Shop Now
-          </button>
-        </h4>
+        <div className="table1 m-3">
+          <h4
+            style={{ height: "360px" }}
+            className="d-flex justify-content-center align-items-center"
+          >
+            Your Cart is Empty{" "}
+            <button className="btn btn-primary" onClick={() => navigate("/")}>
+              {" "}
+              Shop Now
+            </button>
+          </h4>
+        </div>
       )}
-      <div className="container">
+      <div className="container ">
         <div className="row px-3">
           <div className="col-md-8 px-3 ">
             {store.cartData.map((data) => {

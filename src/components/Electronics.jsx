@@ -7,7 +7,7 @@ export default function Electronics() {
   const store = useStore();
   const products = [
     {
-      id: 6,
+      id: 9,
       brand: "Samsung Smart T.V",
       title: "samsung m12 pro ",
       description: "samrt t.v with dolby sounds",
@@ -60,14 +60,23 @@ export default function Electronics() {
   return (
     <div>
       <div className="my-4 mx-5">
-        <h3>All Laptops are available here </h3>
-
-        <div className="container">
+        <div className="container ">
+          <h2
+            className="my-4"
+            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          >
+            {" "}
+            Electonics and Home Appliances{" "}
+          </h2>
           <div className="row">
             {products.map((item) => {
               return (
-                <div className="col-md-3" key={item.id}>
-                  <div className="card ">
+                <div
+                  className="col-md-3 m-1 products"
+                  key={item.id}
+                  style={{ width: "320px" }}
+                >
+                  <div className="card " style={{ border: "0px solid" }}>
                     <div className="card-body">
                       <h3 className="card-title">{item.brand}</h3>
                       <h5 className="card-title">{item.title}</h5>

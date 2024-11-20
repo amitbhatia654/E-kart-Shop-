@@ -1,6 +1,16 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 import {
   getAuth,
@@ -14,12 +24,12 @@ const cartContext = createContext(null);
 export const useStore = () => useContext(cartContext);
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBM9EXGr69l71CsaPmmtPYTEpZ4KVzXszE",
-  authDomain: "ecommerce-5a3ef.firebaseapp.com",
-  projectId: "ecommerce-5a3ef",
-  storageBucket: "ecommerce-5a3ef.appspot.com",
-  messagingSenderId: "501399458164",
-  appId: "1:501399458164:web:74e4440be2a61d85995c21",
+  apiKey: "AIzaSyDbMXEtLj2WjBlNEVwUR56XAgCKdlVWAVk",
+  authDomain: "shoppingcart-db4c8.firebaseapp.com",
+  projectId: "shoppingcart-db4c8",
+  storageBucket: "shoppingcart-db4c8.firebasestorage.app",
+  messagingSenderId: "582839786976",
+  appId: "1:582839786976:web:ac04659951941677c15f85",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -99,16 +109,55 @@ export default function StoreProvider(props) {
     return docSnap.data();
   };
 
-  const updateUserProfile = async (uid, name, phone, address) => {
+  const updateUserProfile = async (uid, name, phone, address, email) => {
     try {
       await setDoc(doc(db, "userDetails", uid), {
         name,
         phone,
         address,
+        email,
       });
       return "Profile Updated Suucessfully";
     } catch (error) {
       console.error("Error adding document: ", error);
+      return error.message;
+    }
+  };
+
+  const addOrderDetails = async (productDetails, orderBy) => {
+    try {
+      await addDoc(collection(db, "orders"), {
+        productDetails,
+        orderBy,
+        createdAt: new Date(),
+      });
+      return "Ordered Successfully";
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      return error.message;
+    }
+  };
+
+  const fetchOrdersByOrderBy = async (orderByValue) => {
+    try {
+      // Create a reference to the 'orders' collection
+      const ordersRef = collection(db, "orders");
+
+      // Create a query to filter documents where 'orderBy' matches the provided value
+      const q = query(ordersRef, where("orderBy", "==", orderByValue));
+
+      // Fetch the documents matching the query
+      const querySnapshot = await getDocs(q);
+
+      // Process the results
+      const orders = querySnapshot.docs.map((doc) => ({
+        id: doc.id, // Document ID
+        ...doc.data(), // Document data
+      }));
+
+      return orders; // Return the fetched orders
+    } catch (error) {
+      console.error("Error fetching orders: ", error);
       return error.message;
     }
   };
@@ -127,6 +176,8 @@ export default function StoreProvider(props) {
         myProfile,
         updateUserProfile,
         removeAllItems,
+        addOrderDetails,
+        fetchOrdersByOrderBy,
       }}
     >
       {props.children}
